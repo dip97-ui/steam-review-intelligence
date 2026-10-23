@@ -1,0 +1,568 @@
+{
+  "kpis": {
+    "total_reviews": 2926,
+    "pct_positive": 86.6,
+    "avg_sentiment": 0.263,
+    "avg_playtime_hours": 39.2,
+    "games": 6,
+    "date_min": "2025-01-01",
+    "date_max": "2025-09-07",
+    "sentiment_vote_agreement": 100.0,
+    "non_neutral_share": 90.0
+  },
+  "sentiment_distribution": {
+    "positive": 2273,
+    "neutral": 292,
+    "negative": 361
+  },
+  "monthly": [
+    {
+      "month": "2025-01",
+      "reviews": 372,
+      "avg_sentiment": 0.286,
+      "pct_positive": 87.903
+    },
+    {
+      "month": "2025-02",
+      "reviews": 326,
+      "avg_sentiment": 0.243,
+      "pct_positive": 85.276
+    },
+    {
+      "month": "2025-03",
+      "reviews": 355,
+      "avg_sentiment": 0.253,
+      "pct_positive": 85.634
+    },
+    {
+      "month": "2025-04",
+      "reviews": 380,
+      "avg_sentiment": 0.251,
+      "pct_positive": 86.053
+    },
+    {
+      "month": "2025-05",
+      "reviews": 367,
+      "avg_sentiment": 0.274,
+      "pct_positive": 87.193
+    },
+    {
+      "month": "2025-06",
+      "reviews": 350,
+      "avg_sentiment": 0.272,
+      "pct_positive": 88.857
+    },
+    {
+      "month": "2025-07",
+      "reviews": 347,
+      "avg_sentiment": 0.261,
+      "pct_positive": 85.303
+    },
+    {
+      "month": "2025-08",
+      "reviews": 348,
+      "avg_sentiment": 0.257,
+      "pct_positive": 86.494
+    },
+    {
+      "month": "2025-09",
+      "reviews": 81,
+      "avg_sentiment": 0.278,
+      "pct_positive": 87.654
+    }
+  ],
+  "top_positive_terms": [
+    [
+      "beautiful",
+      826
+    ],
+    [
+      "great",
+      768
+    ],
+    [
+      "recommend",
+      657
+    ],
+    [
+      "best",
+      516
+    ],
+    [
+      "worth",
+      500
+    ],
+    [
+      "masterpiece",
+      499
+    ],
+    [
+      "addictive",
+      328
+    ],
+    [
+      "fantastic",
+      312
+    ],
+    [
+      "amazing",
+      311
+    ],
+    [
+      "excellent",
+      310
+    ],
+    [
+      "solid",
+      298
+    ],
+    [
+      "incredible",
+      297
+    ],
+    [
+      "brilliant",
+      291
+    ],
+    [
+      "polished",
+      287
+    ],
+    [
+      "love",
+      146
+    ]
+  ],
+  "top_negative_terms": [
+    [
+      "broken",
+      119
+    ],
+    [
+      "unplayable",
+      117
+    ],
+    [
+      "toxic",
+      110
+    ],
+    [
+      "buggy",
+      109
+    ],
+    [
+      "repetitive",
+      109
+    ],
+    [
+      "abandoned",
+      108
+    ],
+    [
+      "terrible",
+      100
+    ],
+    [
+      "recommend",
+      96
+    ],
+    [
+      "overpriced",
+      81
+    ],
+    [
+      "refund",
+      81
+    ],
+    [
+      "crashes",
+      77
+    ],
+    [
+      "lag",
+      77
+    ],
+    [
+      "cheaters",
+      73
+    ],
+    [
+      "hackers",
+      73
+    ],
+    [
+      "disappointing",
+      41
+    ]
+  ],
+  "themes": [
+    {
+      "theme": "Graphics & audio",
+      "reviews": 1556,
+      "share": 53.2,
+      "pct_positive": 93.8,
+      "avg_sentiment": 0.329
+    },
+    {
+      "theme": "Gameplay & design",
+      "reviews": 1358,
+      "share": 46.4,
+      "pct_positive": 83.7,
+      "avg_sentiment": 0.235
+    },
+    {
+      "theme": "Multiplayer & community",
+      "reviews": 953,
+      "share": 32.6,
+      "pct_positive": 76.9,
+      "avg_sentiment": 0.181
+    },
+    {
+      "theme": "Content & updates",
+      "reviews": 844,
+      "share": 28.8,
+      "pct_positive": 85.9,
+      "avg_sentiment": 0.138
+    },
+    {
+      "theme": "Value & monetization",
+      "reviews": 581,
+      "share": 19.9,
+      "pct_positive": 86.1,
+      "avg_sentiment": 0.331
+    },
+    {
+      "theme": "Performance & bugs",
+      "reviews": 521,
+      "share": 17.8,
+      "pct_positive": 44.7,
+      "avg_sentiment": -0.061
+    }
+  ],
+  "playtime_buckets": [
+    {
+      "bucket": "under 1h",
+      "reviews": 80,
+      "pct_positive": 85.0,
+      "avg_sentiment": 0.247
+    },
+    {
+      "bucket": "1-5h",
+      "reviews": 286,
+      "pct_positive": 84.3,
+      "avg_sentiment": 0.24
+    },
+    {
+      "bucket": "5-20h",
+      "reviews": 814,
+      "pct_positive": 88.6,
+      "avg_sentiment": 0.273
+    },
+    {
+      "bucket": "20-50h",
+      "reviews": 925,
+      "pct_positive": 85.8,
+      "avg_sentiment": 0.257
+    },
+    {
+      "bucket": "50-100h",
+      "reviews": 588,
+      "pct_positive": 85.4,
+      "avg_sentiment": 0.256
+    },
+    {
+      "bucket": "100h+",
+      "reviews": 233,
+      "pct_positive": 89.7,
+      "avg_sentiment": 0.304
+    }
+  ],
+  "length_buckets": [
+    {
+      "bucket": "under 20 words",
+      "reviews": 2686
+    },
+    {
+      "bucket": "20-50 words",
+      "reviews": 240
+    }
+  ],
+  "games": [
+    {
+      "game": "Baldur's Gate 3",
+      "appid": 1086940,
+      "reviews": 491,
+      "pct_positive": 99.0,
+      "avg_sentiment": 0.354,
+      "avg_playtime_hours": 37.9,
+      "avg_words": 15.8,
+      "most_praised_theme": "Value & monetization",
+      "most_complained_theme": "Multiplayer & community"
+    },
+    {
+      "game": "Hades",
+      "appid": 1145360,
+      "reviews": 491,
+      "pct_positive": 98.4,
+      "avg_sentiment": 0.355,
+      "avg_playtime_hours": 37.8,
+      "avg_words": 15.7,
+      "most_praised_theme": "Value & monetization",
+      "most_complained_theme": "Performance & bugs"
+    },
+    {
+      "game": "Counter-Strike 2",
+      "appid": 730,
+      "reviews": 491,
+      "pct_positive": 91.0,
+      "avg_sentiment": 0.287,
+      "avg_playtime_hours": 39.0,
+      "avg_words": 15.8,
+      "most_praised_theme": "Graphics & audio",
+      "most_complained_theme": "Performance & bugs"
+    },
+    {
+      "game": "Rust",
+      "appid": 252490,
+      "reviews": 489,
+      "pct_positive": 88.5,
+      "avg_sentiment": 0.286,
+      "avg_playtime_hours": 40.8,
+      "avg_words": 15.6,
+      "most_praised_theme": "Value & monetization",
+      "most_complained_theme": "Performance & bugs"
+    },
+    {
+      "game": "Apex Legends",
+      "appid": 1172470,
+      "reviews": 488,
+      "pct_positive": 84.4,
+      "avg_sentiment": 0.244,
+      "avg_playtime_hours": 40.3,
+      "avg_words": 15.8,
+      "most_praised_theme": "Graphics & audio",
+      "most_complained_theme": "Performance & bugs"
+    },
+    {
+      "game": "PUBG: BATTLEGROUNDS",
+      "appid": 578080,
+      "reviews": 476,
+      "pct_positive": 57.6,
+      "avg_sentiment": 0.045,
+      "avg_playtime_hours": 39.3,
+      "avg_words": 15.8,
+      "most_praised_theme": "Graphics & audio",
+      "most_complained_theme": "Performance & bugs"
+    }
+  ],
+  "most_helpful": [
+    {
+      "recommendationid": 900000003,
+      "game": "Hades",
+      "date": "2025-02-09",
+      "votes_up": 40,
+      "votes_funny": 5,
+      "sentiment_label": "positive",
+      "sentiment_score": 0.5821,
+      "review_text_clean": "What a excellent experience. Every run feels amazing, the gunplay is a masterpiece. 10/10.",
+      "word_count": 14,
+      "playtime_hours": 19.1,
+      "voted_up": true
+    },
+    {
+      "recommendationid": 900000997,
+      "game": "PUBG: BATTLEGROUNDS",
+      "date": "2025-02-06",
+      "votes_up": 40,
+      "votes_funny": 5,
+      "sentiment_label": "negative",
+      "sentiment_score": -0.5659,
+      "review_text_clean": "Sadly abandoned. Overpriced for a terrible matchmaking; asked for a refund. Fix it please.",
+      "word_count": 14,
+      "playtime_hours": 42.0,
+      "voted_up": false
+    },
+    {
+      "recommendationid": 900001641,
+      "game": "Apex Legends",
+      "date": "2025-05-19",
+      "votes_up": 40,
+      "votes_funny": 1,
+      "sentiment_label": "negative",
+      "sentiment_score": -0.4033,
+      "review_text_clean": "Cannot recommend in this state. Constant crashes and lag make the soundtrack unplayable. gg.",
+      "word_count": 14,
+      "playtime_hours": 67.2,
+      "voted_up": false
+    },
+    {
+      "recommendationid": 900002566,
+      "game": "Rust",
+      "date": "2025-01-09",
+      "votes_up": 40,
+      "votes_funny": 6,
+      "sentiment_label": "positive",
+      "sentiment_score": 0.4316,
+      "review_text_clean": "What a solid experience. Great matchmaking, beautiful matchmaking, well worth the price.",
+      "word_count": 12,
+      "playtime_hours": 0.4,
+      "voted_up": true
+    },
+    {
+      "recommendationid": 900002562,
+      "game": "Rust",
+      "date": "2025-04-23",
+      "votes_up": 40,
+      "votes_funny": 3,
+      "sentiment_label": "positive",
+      "sentiment_score": 0.4033,
+      "review_text_clean": "I adore this game. Every run feels amazing, the story is a masterpiece. gg.",
+      "word_count": 14,
+      "playtime_hours": 6.3,
+      "voted_up": true
+    },
+    {
+      "recommendationid": 900002546,
+      "game": "Rust",
+      "date": "2025-01-17",
+      "votes_up": 40,
+      "votes_funny": 7,
+      "sentiment_label": "positive",
+      "sentiment_score": 0.5597,
+      "review_text_clean": "Absolutely great. Great community, beautiful story, well worth the price.",
+      "word_count": 10,
+      "playtime_hours": 0.6,
+      "voted_up": true
+    },
+    {
+      "recommendationid": 900000960,
+      "game": "PUBG: BATTLEGROUNDS",
+      "date": "2025-05-17",
+      "votes_up": 40,
+      "votes_funny": 4,
+      "sentiment_label": "positive",
+      "sentiment_score": 0.1864,
+      "review_text_clean": "Amazing from start to finish. The developers really care, updates keep making the matchmaking better. Fix it please.",
+      "word_count": 18,
+      "playtime_hours": 10.8,
+      "voted_up": true
+    },
+    {
+      "recommendationid": 900000140,
+      "game": "Hades",
+      "date": "2025-06-20",
+      "votes_up": 40,
+      "votes_funny": 2,
+      "sentiment_label": "positive",
+      "sentiment_score": 0.4888,
+      "review_text_clean": "This game is addictive. Every run feels fantastic, the level design is a masterpiece. 10/10.",
+      "word_count": 15,
+      "playtime_hours": 17.3,
+      "voted_up": true
+    },
+    {
+      "recommendationid": 900001618,
+      "game": "Apex Legends",
+      "date": "2025-08-13",
+      "votes_up": 40,
+      "votes_funny": 5,
+      "sentiment_label": "positive",
+      "sentiment_score": 0.4005,
+      "review_text_clean": "I love this game. One of the best gameplay I have seen in years, highly recommend it. gg.",
+      "word_count": 18,
+      "playtime_hours": 4.9,
+      "voted_up": true
+    },
+    {
+      "recommendationid": 900000143,
+      "game": "Hades",
+      "date": "2025-06-14",
+      "votes_up": 40,
+      "votes_funny": 8,
+      "sentiment_label": "positive",
+      "sentiment_score": 0.1864,
+      "review_text_clean": "This game is great. The gameplay is beautiful and the progression keeps me coming back. Fix it please.",
+      "word_count": 18,
+      "playtime_hours": 48.4,
+      "voted_up": true
+    },
+    {
+      "recommendationid": 900000161,
+      "game": "Hades",
+      "date": "2025-09-05",
+      "votes_up": 40,
+      "votes_funny": 5,
+      "sentiment_label": "positive",
+      "sentiment_score": 0.4033,
+      "review_text_clean": "Polished from start to finish. Every run feels great, the matchmaking is a masterpiece. 10/10.",
+      "word_count": 15,
+      "playtime_hours": 86.6,
+      "voted_up": true
+    },
+    {
+      "recommendationid": 900001610,
+      "game": "Apex Legends",
+      "date": "2025-04-24",
+      "votes_up": 40,
+      "votes_funny": 8,
+      "sentiment_label": "positive",
+      "sentiment_score": 0.2963,
+      "review_text_clean": "I adore this game. One of the best level design I have seen in years, highly recommend it. Fix it please.",
+      "word_count": 21,
+      "playtime_hours": 98.7,
+      "voted_up": true
+    }
+  ],
+  "insights": [
+    "86.6% of the 2,926 reviews recommend the game (thumbs up).",
+    "Where the text scorer takes a position (90.0% of reviews), its polarity matches the player's thumbs up/down vote 100.0% of the time - the lexicon signal lines up with real votes.",
+    "Most praised game: Baldur's Gate 3 (99.0% positive). Least positive: PUBG: BATTLEGROUNDS (57.6%).",
+    "Players sound happiest when talking about 'value & monetization' and most negative about 'performance & bugs'.",
+    "Veterans (100h+ played) are 4.7 points more positive than players with under 1 hour, so the games hold up after the first impression.",
+    "Busiest month in the sample: 2025-04 with 380 reviews."
+  ],
+  "cleaning_report": {
+    "source_raw": "data/raw/steam_reviews_raw.csv",
+    "output_clean": "data/processed/cleaned_reviews.csv",
+    "rows_in": 3018,
+    "rows_out": 2926,
+    "pct_kept": 97.0,
+    "steps": [
+      {
+        "step": "Raw rows loaded",
+        "removed": -3018,
+        "remaining": 3018
+      },
+      {
+        "step": "Drop empty or missing review text",
+        "removed": 1,
+        "remaining": 3017
+      },
+      {
+        "step": "Drop duplicate reviews",
+        "removed": 89,
+        "remaining": 2928
+      },
+      {
+        "step": "Keep English reviews only",
+        "removed": 1,
+        "remaining": 2927
+      },
+      {
+        "step": "Drop reviews shorter than 3 words",
+        "removed": 1,
+        "remaining": 2926
+      },
+      {
+        "step": "Drop rows without a valid timestamp",
+        "removed": 0,
+        "remaining": 2926
+      },
+      {
+        "step": "Final cleaned dataset",
+        "removed": 0,
+        "remaining": 2926
+      }
+    ]
+  }
+}

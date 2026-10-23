@@ -1,0 +1,44 @@
+{
+  "source_raw": "data/raw/steam_reviews_raw.csv",
+  "output_clean": "data/processed/cleaned_reviews.csv",
+  "rows_in": 3018,
+  "rows_out": 2926,
+  "pct_kept": 97.0,
+  "steps": [
+    {
+      "step": "Raw rows loaded",
+      "removed": -3018,
+      "remaining": 3018
+    },
+    {
+      "step": "Drop empty or missing review text",
+      "removed": 1,
+      "remaining": 3017
+    },
+    {
+      "step": "Drop duplicate reviews",
+      "removed": 89,
+      "remaining": 2928
+    },
+    {
+      "step": "Keep English reviews only",
+      "removed": 1,
+      "remaining": 2927
+    },
+    {
+      "step": "Drop reviews shorter than 3 words",
+      "removed": 1,
+      "remaining": 2926
+    },
+    {
+      "step": "Drop rows without a valid timestamp",
+      "removed": 0,
+      "remaining": 2926
+    },
+    {
+      "step": "Final cleaned dataset",
+      "removed": 0,
+      "remaining": 2926
+    }
+  ]
+}
