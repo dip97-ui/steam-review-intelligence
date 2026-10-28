@@ -105,8 +105,9 @@ def bucket_length(words):
     return LENGTH_ORDER[4]
 
 
-def main():
-    df = pd.read_csv(CLEAN_PATH)
+def main(clean_path=CLEAN_PATH, enriched_path=ENRICHED_PATH,
+         analysis_path=ANALYSIS_PATH, report_path=REPORT_PATH):
+    df = pd.read_csv(clean_path)
 
     # --- sentiment scoring -------------------------------------------------
     scored = df["review_text_clean"].map(score_text)
@@ -123,7 +124,7 @@ def main():
     df["month"] = df["date"].str.slice(0, 7)
     df["themes"] = df["review_text_clean"].map(lambda t: sorted(theme_hits(t)))
 
-    df.to_csv(ENRICHED_PATH, index=False)
+    df.to_csv(enriched_path, index=False)
 
     # --- aggregates --------------------------------------------------------
     total = len(df)
@@ -274,13 +275,13 @@ def main():
         "insights": insights,
     }
 
-    with open(REPORT_PATH) as f:
+    with open(report_path) as f:
         analysis["cleaning_report"] = json.load(f)
 
-    with open(ANALYSIS_PATH, "w") as f:
+    with open(analysis_path, "w") as f:
         json.dump(analysis, f, indent=2, default=str)
 
-    print(f"analyzed {total} reviews -> {ANALYSIS_PATH}")
+    print(f"analyzed {total} reviews -> {analysis_path}")
     for line in insights:
         print(" *", line)
 
