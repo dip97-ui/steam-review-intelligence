@@ -40,14 +40,14 @@ def normalize_text(text):
     return WS_RE.sub(" ", text).strip()
 
 
-def main():
+def main(raw_path=RAW_PATH, clean_path=CLEAN_PATH, report_path=REPORT_PATH):
     steps = []
 
     def record(step, before, after):
         steps.append({"step": step, "removed": int(before - after),
                       "remaining": int(after)})
 
-    df = pd.read_csv(RAW_PATH, dtype=str, keep_default_na=False)
+    df = pd.read_csv(raw_path, dtype=str, keep_default_na=False)
     record("Raw rows loaded", 0, len(df))
     start = len(df)
 
@@ -104,23 +104,24 @@ def main():
     df = df[keep]
     record("Final cleaned dataset", len(df), len(df))
 
-    os.makedirs(os.path.dirname(CLEAN_PATH), exist_ok=True)
-    df.to_csv(CLEAN_PATH, index=False)
+    os.makedirs(os.path.dirname(clean_path), exist_ok=True)
+    df.to_csv(clean_path, index=False)
 
     report = {
-        "source_raw": RAW_PATH,
-        "output_clean": CLEAN_PATH,
+        "source_raw": raw_path,
+        "output_clean": clean_path,
         "rows_in": int(start),
         "rows_out": int(len(df)),
         "pct_kept": round(100 * len(df) / max(start, 1), 1),
         "steps": steps,
     }
-    with open(REPORT_PATH, "w") as f:
+    with open(report_path, "w") as f:
         json.dump(report, f, indent=2)
 
     print(f"cleaned {start} -> {len(df)} rows")
     for s in steps:
         print(f"  {s['step']:<38} -{s['removed']:<6} = {s['remaining']}")
+    return report
 
 
 if __name__ == "__main__":
