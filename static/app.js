@@ -25,10 +25,15 @@ Chart.defaults.color = C.ink;
 Chart.defaults.borderColor = C.grid;
 Chart.defaults.font.size = 12;
 
+let currentDataset = "";   // "" = default dataset, else a Steam App ID
+function dsQuery(prefix) {
+  return currentDataset ? `${prefix}dataset=${currentDataset}` : "";
+}
+
 const fmt = (n) => n.toLocaleString("en-US");
 
 async function loadSummary() {
-  const res = await fetch("/api/summary");
+  const res = await fetch("/api/summary" + dsQuery("?"));
   return res.json();
 }
 
@@ -214,7 +219,7 @@ function renderGames(games) {
   const tbody = document.querySelector("#gamesTable tbody");
   tbody.innerHTML = games.map((g) => `
     <tr>
-      <td class="game-name">${g.game}</td>
+      <td class="game-name">${escapeHtml(g.game)}</td>
       <td>${fmt(g.reviews)}</td>
       <td><div class="posbar"><span style="width:${g.pct_positive}%"></span></div>
           <span class="posnum">${g.pct_positive}%</span></td>
@@ -251,6 +256,7 @@ function explorerParams() {
     sort: document.getElementById("f-sort").value,
     page: state.page, per_page: 15,
   });
+  if (currentDataset) p.set("dataset", currentDataset);
   return p.toString();
 }
 
@@ -264,7 +270,7 @@ async function loadReviews() {
     const shown = long ? r.review_text_clean.slice(0, 260) + "…" : r.review_text_clean;
     return `<div class="review">
       <div class="review-head">
-        <span class="game">${r.game}</span>
+        <span class="game">${escapeHtml(r.game)}</span>
         <span class="pill ${r.sentiment_label}">${r.sentiment_label} ${r.sentiment_score}</span>
         <span class="pill ${r.voted_up ? "vote-up" : "vote-down"}">
           ${r.voted_up ? "RECOMMENDED" : "NOT RECOMMENDED"}</span>
@@ -287,10 +293,13 @@ function escapeHtml(s) {
     ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 }
 
+function fillGameFilter(games) {
+  document.getElementById("f-game").innerHTML = '<option value="">All games</option>' +
+    games.map((g) => `<option>${escapeHtml(g.game)}</option>`).join("");
+}
+
 function wireExplorer(games) {
-  const sel = document.getElementById("f-game");
-  sel.innerHTML = '<option value="">All games</option>' +
-    games.map((g) => `<option>${g.game}</option>`).join("");
+  fillGameFilter(games);
   let debounce;
   document.getElementById("f-q").addEventListener("input", () => {
     clearTimeout(debounce);
@@ -320,17 +329,109 @@ function wireExplorer(games) {
   });
 }
 
+/* ---------------- dataset switching + fetch by App ID ---------------- */
+async function showDataset(ds) {
+  currentDataset = ds;
+  const data = await loadSummary();
+  chartData = data;
+  const k = data.kpis;
+  const sel = document.getElementById("dataset-select");
+  const label = ds ? sel.options[sel.selectedIndex].text : "default dataset";
+  document.getElementById("data-badge").textContent =
+    ds ? `${fmt(k.total_reviews)} reviews · ${label}` : `${fmt(k.total_reviews)} reviews · default dataset`;
+  document.querySelector(".demo-banner").style.display = ds ? "none" : "";
+  renderKpis(k);
+  renderInsights(data.insights);
+  renderCharts(data);
+  renderGames(data.games);
+  renderFunnel(data.cleaning_report);
+  fillGameFilter(data.games);
+  state.page = 1;
+  await loadReviews();
+}
+
+async function refreshDatasets(select) {
+  const d = await (await fetch("/api/datasets")).json();
+  const sel = document.getElementById("dataset-select");
+  sel.innerHTML = `<option value="">Default dataset (${fmt(d.default.reviews)} reviews, ${d.default.games} games)</option>` +
+    d.custom.map((c) => `<option value="${c.appid}">${escapeHtml(c.game)} (${c.appid}) - ${fmt(c.analyzed)} reviews</option>`).join("");
+  sel.value = select !== undefined ? String(select) : currentDataset;
+}
+
+let pollTimer = null;
+async function pollFetch() {
+  const st = await (await fetch("/api/fetch/status")).json();
+  const msg = document.getElementById("fetch-status");
+  const btn = document.getElementById("fetch-btn");
+  if (st.state === "running") {
+    msg.className = "fetch-status";
+    msg.textContent = st.message || "Working ...";
+    pollTimer = setTimeout(pollFetch, 1500);
+    return;
+  }
+  btn.disabled = false;
+  if (st.state === "done") {
+    msg.className = "fetch-status ok";
+    msg.textContent = st.message + " Your default dataset was not changed.";
+    await refreshDatasets(st.result.appid);
+    await showDataset(String(st.result.appid));
+  } else if (st.state === "error") {
+    msg.className = "fetch-status err";
+    msg.textContent = "Failed: " + st.message;
+  }
+}
+
+function wireFetch() {
+  const btn = document.getElementById("fetch-btn");
+  const msg = document.getElementById("fetch-status");
+  btn.addEventListener("click", async () => {
+    const appid = document.getElementById("fetch-appid").value.trim();
+    const count = document.getElementById("fetch-count").value;
+    if (!/^\d{1,9}$/.test(appid)) {
+      msg.className = "fetch-status err";
+      msg.textContent = "Enter a numeric Steam App ID, e.g. 413150.";
+      return;
+    }
+    btn.disabled = true;
+    msg.className = "fetch-status";
+    msg.textContent = "Starting ...";
+    const res = await fetch("/api/fetch", {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ appid, count }),
+    });
+    if (!res.ok && res.status !== 409) {
+      const err = await res.json();
+      msg.className = "fetch-status err";
+      msg.textContent = err.error || "Could not start fetch.";
+      btn.disabled = false;
+      return;
+    }
+    clearTimeout(pollTimer);
+    pollFetch();
+  });
+  document.getElementById("fetch-appid").addEventListener("keydown",
+    (e) => { if (e.key === "Enter") btn.click(); });
+  document.getElementById("dataset-select").addEventListener("change",
+    (e) => showDataset(e.target.value));
+  // resume progress display if a fetch is already running (page reload)
+  fetch("/api/fetch/status").then((r) => r.json()).then((st) => {
+    if (st.state === "running") { btn.disabled = true; pollFetch(); }
+  });
+}
+
 (async function init() {
   const data = await loadSummary();
   chartData = data;
   const k = data.kpis;
   document.getElementById("data-badge").textContent =
-    `${fmt(k.total_reviews)} reviews · synthetic demo data`;
+    `${fmt(k.total_reviews)} reviews · default dataset`;
   renderKpis(k);
   renderInsights(data.insights);
   renderCharts(data);
   renderGames(data.games);
   renderFunnel(data.cleaning_report);
   wireExplorer(data.games);
+  await refreshDatasets("");
+  wireFetch();
   await loadReviews();
 })();
